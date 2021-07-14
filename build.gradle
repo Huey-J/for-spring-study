@@ -1,0 +1,36 @@
+buildscript {
+	ext {		// 전역변수 in build.gradle
+		springBootVersion = '2.5.2'
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'	// 스프링부트의 의존성 관리를 위한 플러그인
+	id 'java'
+}
+
+group = 'com.spring'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {	// 라이브러리(의존성)을 받는 곳 = 원격 저장소
+	mavenCentral()		// 기본 (최근에는 jcenter로 많이 넘어감 (보다 업로드하기 쉬운 마켓?))
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
