@@ -26,6 +26,7 @@ repositories {	// 라이브러리(의존성)을 받는 곳 = 원격 저장소
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'junit:junit:4.12'	// jUnit5 테스트 라이브러리
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
