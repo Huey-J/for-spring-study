@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;   //테스트 검증 �
 public class HelloResponseDtoTest {
 
     @Test
-    public void 롬복_테스트() {
+    public void 롬복_테스트() {      //롬복의 getter, setter가 잘 작동 하는지
         //given
         String name = "test";
         int amount = 100;
