@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = HelloController.class)    // helloController를 테스트함
+@WebMvcTest(controllers = HelloController.class)    // helloController를 테스트함 (JPA기능 작동 X)
 public class HelloControllerTest {
 
     @Autowired                  //스프링 빈 주입
