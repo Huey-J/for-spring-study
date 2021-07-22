@@ -10,21 +10,21 @@ import java.time.LocalDateTime;
 @Controller
 public class ChatController {
 
-	@MessageMapping("hello")		//메시지를 hello로 전송하면 해당 메소드 실행
-	@SendTo("/chat/hello")			//반환값을 모든 User에 방송
+	@MessageMapping("/hello")			//메시지가 '/hello'로 전송되면 해당 메소드 실행
+	@SendTo("/chat/hello")				//반환값을 '/chat/hello'를 구독하고 있는 모든 User에게 broadcast
 	public HelloMessage hello(HelloMessage message) throws Exception {
-		Thread.sleep(100);
+		Thread.sleep(100);		//테스트를 위해 일부러 0.1초 delay
 		return message;
 	}
 
-	@MessageMapping("bye")
+	@MessageMapping("/bye")
 	@SendTo("/chat/bye")
 	public HelloMessage bye(HelloMessage message) throws Exception {
 		Thread.sleep(100);
 		return message;
 	}
 
-	@MessageMapping("detail")
+	@MessageMapping("/detail")
 	@SendTo("/chat/detail")
 	public HelloMessage detail(HelloMessage message) throws Exception {
 		Thread.sleep(100);
