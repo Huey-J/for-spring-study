@@ -12,12 +12,18 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {    //sockJS(JS의 소켓함수)의 접속을 허용
+                                                                            //handshake를 통해 http->ws로 upgrade
         registry.addEndpoint("/socket-app-door").withSockJS();
+                                                                            //Simple Text Oriented Message Protocol (STOMP)
+                                                                            // - 간단한 텍스트 기반 메시지 프로토콜
+                                                                            // - command + header + body로 구성
+                                                                            // -
     }
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker("/chat");
-        registry.setApplicationDestinationPrefixes("/");        //소켓 메소드 URL의 접두사
+        registry.enableSimpleBroker("/chat", "/queue");     //1대1 통신은 queue
+                                                                             //1대N 통신은 topic
+        registry.setApplicationDestinationPrefixes("/");                     //소켓 메소드 URL의 접두사
     }
 }
