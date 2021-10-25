@@ -59,5 +59,13 @@ public class BoardsService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void delete (Long id) {
+        //존재하는 boards인지 확인 후 삭제
+        Boards boards = boardsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+        boardsRepository.delete(boards);
+     }
+
 
 }
